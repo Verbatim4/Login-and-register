@@ -11,7 +11,7 @@ using namespace std;
 int main() 
 {	
 	char l_or_r;
-	cout << "Do you want to Login(L) or Register(R)?";
+	cout << "Do you want to Login(L) or Register(R)? ";
 	cin >> l_or_r;
 	l_or_r = toupper(l_or_r);
 

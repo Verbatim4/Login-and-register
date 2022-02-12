@@ -1,2 +1,4 @@
 asd:Password1
 user:Password1
+newUser:Password1
+newUser1:Password1

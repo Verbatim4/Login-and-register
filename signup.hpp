@@ -10,7 +10,8 @@
 using namespace std;
 
 bool user_check(string username) {
-	if (username.find(',') != string::npos)
+	// TODO: make username check ban special chars
+	if (username.find(',') != string::npos || username.find(' ') != string::npos)
 	{
 		cout << "No commas or spaces are allowed in a username.\b";
 		return false;
@@ -20,7 +21,8 @@ bool user_check(string username) {
 }
 
 bool pass_check(string password) {
-	if (password.find(',') != string::npos)
+	// TODO: make password check ban all special chars
+	if (password.find(',') != string::npos || password.find(' ') != string::npos)
 	{
 		cout << "No commas or spaces are allowed in a password.\n";
 		return false;
@@ -43,7 +45,7 @@ bool pass_check(string password) {
 
 	if (!has_num || !has_upper)
 	{
-		cout << "Password need at least one uppercase letter.\n" << endl;
+		cout << "Password need at least one number and uppercase letter.\n" << endl;
 		return false;
 	}
 
@@ -71,7 +73,7 @@ bool user_exists(string username) {
 void enter_users(string file, string username, string password) {
 	ofstream logins_enter(file, ios::app);
 	logins_enter << username << ":" << password << endl;
-	
+	logins_enter.close();
 	return;
 }
 
@@ -82,13 +84,13 @@ void sign_up() {
 	string verify = "";
 
 	cout << "Enter a username: ";
-	cin >> username;
+	getline(cin, username);
 
 	cout << "Enter a password: ";
-	cin >> password;
+	getline(cin, password);
 
 	cout << "Verify your password: ";
-	cin >> verify;
+	getline(cin, verify);
 
 
 	if (!user_check(username))
